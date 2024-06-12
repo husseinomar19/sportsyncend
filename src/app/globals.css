@@ -1,33 +1,378 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body{
+  margin: 0;
+  padding: 0;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+}
+html,body{
+  scroll-behavior: smooth;
+}
+header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  height: 60px;
+  width: 94%;
+}
+.head ul{
+  display: flex;
+  list-style:none;
+  align-items: center;
+
+}
+.head img{
+  height: 100%;
+  object-fit: cover;
+}
+.head p{
+  color: white;
+  background-color: black;
+  padding: 20px 200px;
+}
+.samen {
+  position: relative;
+
+}
+.span_een{
+  position: absolute;
+  background-color: white;
+  height: 132px;
+  transform: rotate(211deg);
+  width: 100px;
+  top: -46px;
+  left: -10px;
+}
+.span_twee{
+  position: absolute;
+  background-color: white ;
+  height: 132px;
+  transform: rotate(211deg);
+  width: 55px;
+  top: -25px;
+  right: -17px;
+}
+.head_list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 88%;
+  margin-top: 20px;
+}
+.head_list img{
+  margin-right: 269px;
+}
+.head_list ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  gap: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.head_list ul li a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.home_hero{
+  background-image: url(/homeimg.png);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-position: center;
+  height: 100vh;
+}
+.home_info{
+  height: 100%;
+  display: flex;
+  justify-content:flex-start;
+  align-items:flex-start;
+  flex-direction: column;
+  padding: 100px 0px 0px 127px;
+}
+.home_info img{
+  width: 200px;
+} 
+.home_info h2{
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  width: 600px;
+  margin-bottom: 0px;
+  
+}
+.home_info p{
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  width: 600px;
+  margin-top: 10px;
+  padding: 0px;
+}
+.ontdekmeer{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+  padding: 5px 20px;
+  width: 120px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.ontdekmeer img{
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  margin-top: 3px;
+
+}
+.ontdekmeer p{
+  color: black;
+}
+.icons_project{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 4rem 0px 4rem 0px;
+}
+.icons_items{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.verhalentitel{
+  padding: 0px 100px 20px 100px;
+}
+.verhaal_titel{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.verhaal_titel img{
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+.gebruiker_verhalen{
+  padding: 0px 100px 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.geberuiker_verhaal_ithem{
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+.verhaal_ithem_info h4,p{
+ padding: 0px 20px;
+}
+.verhaal_bekijken{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: solid 1px black;
+ 
+}
+.verhaal_bekijken img,h5{
+padding: 0px 20px;
+}
+.gebruiker_items_img{
+  width: 100%;
+}
+.home_over{
+  padding: 100px;
+  position: relative;
+}
+.home_over p{
+  width: 50%;
+  letter-spacing: 1px;
+  padding: 0px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  margin-top: 30px;
+  font-style: italic;
+}  
+.button_comm{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: fit-content;
+}
+.button_comm img{
+  width: 25px;
+  height: 30px;
+}
+.button_comm a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.home_over_logo{
+  width: 130px;
+  position: absolute;
+  right: 500px;
+  top: 300px;
+  transform: rotate(139deg);
+
+}     
+
+/*
+Inlog pagina style
+**/
+
+.inlog_form{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 50px;
+ 
+}
+.inlog_form form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 252, 252, 0.13);
+  box-shadow: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 360px;
+  padding: 20px;
+}
+.inlog_form form h2{
+  color: white;
+  font-size: 30px;
+}
+.inlog_form form input{
+  background-color: rgba(255, 255, 255, 0.34);
+  border: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 340px;
+  border-radius: 5px;
+}
+.inlog_form form input::placeholder{
+  color: black;
+  font-weight: bold;
+
+
+}
+input[type="submit"]{
+ margin: 0;
+ padding: 0;
+ width: 360px !important;
+ margin-top: 100px;
+ font-weight: bold;
+}
+.google{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.google a{
+  color: white;
+  text-decoration: none;
+}
+.inlog_form form a{
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.logo_gebruiker{
+  margin-top: 30px;
+}
+.Posten{
+  padding: 20px;
+}
+.header_user{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.header_user a img{
+  width: 40px;
+  height: 40px;
+}
+.user_titel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.user_titel img{
+  width: 40px;
+  height: 40px;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.user_naam{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+.user_naam img{
+  width: 30px;
+  height: 30px;
+}
+.user_naam_titel h4,p{
+  margin: 0;
+  padding: 0px;
+}
+.user_naam{
+ padding-left: 30px;
+}
+.post_teskt{
+  margin-top: 10px;
+  padding-left: 30px;
+}
+.post_img{
+  width: 100%;
+  margin-top: 20px;
+  
+}
+.post_img img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+.post_like{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: solid 2px black;
+}
+.post_likes{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.like{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.posten_items{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 4px black;
+}
+.user_inlog_img{
+  border-radius: 50%;
 }

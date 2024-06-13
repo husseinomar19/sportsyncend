@@ -2,12 +2,14 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getAuth,GoogleAuthProvider} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBxGow9VBdJWZBQffVf_iTmXV9z6KjDOOY",
   authDomain: "sportsync-a55cc.firebaseapp.com",
   projectId: "sportsync-a55cc",
@@ -18,17 +20,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const provider  = new GoogleAuthProvider();
-import { signInWithPopup } from "firebase/auth";
-export const handleLogin = async () => {
-  try {
-    const result = await signInWithPopup(auth, provider);
-    return result.user;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
+
+const db = getFirestore();
+const storage = getStorage();
+export { db, storage };

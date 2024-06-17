@@ -5,6 +5,7 @@ import Footer from "../componeten/Footer";
 import { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import React, { FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { storage, db } from '../firebase'; // Import the initialized services
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc, collection } from "firebase/firestore";
@@ -37,7 +38,7 @@ export default function Home() {
       setFile(event.target.files[0]);
     }
   };
-
+  const router = useRouter();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Form submitted");
@@ -69,8 +70,10 @@ export default function Home() {
             post_titel,
             post_img: downloadURL,
             createdAt: new Date(),
+            like: 0 
           });
           alert('Post created successfully!');
+          router.push('/gebruikers'); 
         }
       );
     } catch (err) {

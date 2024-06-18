@@ -379,3 +379,6 @@ input[type="submit"]{
 .user_inlog_img{
   border-radius: 50%;
 }
+form span{
+  color: white;
+}

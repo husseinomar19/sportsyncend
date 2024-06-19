@@ -1,9 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,FormEvent} from 'react';
 import Cookies from 'universal-cookie';
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from '../firebase';
-
 const cookies = new Cookies();
 
 export default function Gebruiker() {
@@ -11,6 +10,7 @@ export default function Gebruiker() {
     const [userNaam, setUserNaam] = useState('');
     const [userImg, setUserImg] = useState('');
     const [posts, setPosts] = useState([]);
+    const [display, setDisplay] = useState(false);
 
     useEffect(() => {
         const tokenNaam = cookies.get("user_naam");
@@ -58,6 +58,40 @@ export default function Gebruiker() {
         }
     };
 
+    const handleOpmerkingen = async (event, postId) => {
+        event.preventDefault();
+        const form = event.target;
+        const opmerking = form.elements.namedItem('opmerking').value.trim(); // Trim to remove leading/trailing spaces
+    
+        if (!opmerking) {
+            // Handle empty comment submission (optional)
+            console.error("Comment cannot be empty");
+            return;
+        }
+    
+        const postRef = doc(db, "content", postId);
+    
+        try {
+            await updateDoc(postRef, {
+                opmerking: opmerking
+            });
+    
+            // Update local state or fetch updated data if needed
+            // For example:
+            // Refetch posts or update local state to reflect the new comment
+    
+            console.log("Comment submitted successfully:", opmerking);
+            // Optionally reset the form or close the comment section
+            setDisplay(false);
+            form.reset(); // Reset form fields
+    
+        } catch (error) {
+            console.error("Error updating comments: ", error.message);
+            // Handle error: show error message to the user or retry logic
+        }
+    };
+    
+   
     return (
         <>
             <header id="home_hero">
@@ -106,16 +140,23 @@ export default function Gebruiker() {
                         </div>
                         <div className="post_like">
                             <p>{post.like} Likes</p>
-                            <p>20 opmerkingen</p>
+                            <p>opmerkingen</p>
                         </div>
                         <div className="post_likes">
                             <div className="like" onClick={() => handleLike(post.id, post.like)}>
                                 <img src="/like.png" alt="like" />
                                 <p>Vind ik leuk</p>
                             </div>
-                            <div className="like">
+                            <div className="like"  onClick={() => setDisplay(true)}>
                                 <img src="/opmerking.png" alt="comment" />
                                 <p>opmerkingen</p>
+                                <form className='opmerkingen' style={{ display: display ? 'block' : 'none' }}
+                                  onSubmit={(event) => handleOpmerkingen(event, post.id)}
+                                >
+                                    <img src="/pijl.png" alt="pijl" className="arrow-left" onClick={() => setDisplay(false)}/> 
+                                    <input type="text" placeholder='opmerking'name='opmerking'/>
+                                    <input type="submit" value="Reageren" />
+                                </form>
                             </div>
                             <div className="like">
                                 <img src="/delen.png" alt="share" />
@@ -125,6 +166,9 @@ export default function Gebruiker() {
                     </div>
                 ))}
             </div>
+
+
+          
         </>
     );
 }

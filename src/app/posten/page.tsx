@@ -23,12 +23,12 @@ export default function Home() {
 
   useEffect(() => {
     const tokenNaam = cookies.get("user_naam");
-    const userImg = cookies.get("user-img");
+    const userImg = cookies.get("user_img");
     const token = cookies.get("user_token");
 
     if (token) {
-      setUserNaam(tokenNaam);
-      setUserImg(userImg);
+      setUserNaam(tokenNaam || ''); // Ensure userNaam is not undefined
+      setUserImg(userImg || ''); // Ensure userImg is not undefined
       setAuth(true);
     }
   }, []);
@@ -38,6 +38,7 @@ export default function Home() {
       setFile(event.target.files[0]);
     }
   };
+
   const router = useRouter();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -65,12 +66,13 @@ export default function Home() {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
           const newDocRef = doc(collection(db, 'content')); // Generates a new document reference with a unique ID
           await setDoc(newDocRef, {
-            displayName: userNaam,
-            userFoto: userImg,
-            post_titel,
+            displayName: userNaam || 'Unknown User',
+            userFoto: userImg || 'default-image-url', // Use a default image URL if userImg is undefined
+            post_titel: post_titel || 'No Title',
             post_img: downloadURL,
             createdAt: new Date(),
-            like: 0 
+            like: 0,
+            opmerking: ""
           });
           alert('Post created successfully!');
           router.push('/gebruikers'); 
@@ -97,8 +99,8 @@ export default function Home() {
               <div className="midle-inercontainer-left">
                 {isauth ? (
                   <>
-                    <img src={userImg} alt="usericon" className="usericon" />
-                    <p className="name-user-post">{userNaam}</p>
+                    <img src={userImg || 'default-image-url'} alt="usericon" className="usericon" />
+                    <p className="name-user-post">{userNaam || 'Unknown User'}</p>
                   </>
                 ) : (
                   <h2>Inloggen om te Posten</h2>

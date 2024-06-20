@@ -356,6 +356,7 @@ input[type="submit"]{
   align-items: center;
   padding: 10px;
   border-bottom: solid 2px black;
+  position: relative;
   
 }
 .post_likes{
@@ -411,4 +412,26 @@ form span{
   position: absolute;
   transform: rotate(90deg);
   z-index: 9999;
+}
+.opmerkingen_users{
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(4, 3, 3, 0.34);
+  z-index: 99;
+  color: white;
+  right: 120px;
+  top: -350px;
+
+}
+.opmerkingen_lijst{
+  cursor: pointer;
+}
+.opmerk{
+  border-bottom: solid 2px white;
+  margin-top: 10px;
+  padding: 4px;
+}
+.opmerk h3{
+  margin: 0px ;
 }

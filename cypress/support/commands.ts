@@ -35,3 +35,23 @@
 //     }
 //   }
 // }
+declare namespace Cypress {
+    interface Chainable<Subject = any> {
+      uploadFile(selector: string, fileUrl: string, fileType?: string): Chainable<Subject>;
+    }
+  }
+  
+Cypress.Commands.add('uploadFile', (selector: string, fileUrl: string, fileType = '') => {
+    cy.get(selector).then(subject => {
+      cy.fixture(fileUrl, 'base64').then(content => {
+        const el = subject[0] as HTMLInputElement;
+        const blob = Cypress.Blob.base64StringToBlob(content, fileType);
+        const testFile = new File([blob], fileUrl, { type: fileType });
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(testFile);
+        el.files = dataTransfer.files;
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  });
+  

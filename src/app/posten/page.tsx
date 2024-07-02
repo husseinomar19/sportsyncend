@@ -69,7 +69,7 @@ export default function Home() {
             displayName: userNaam || 'Unknown User',
             userFoto: userImg || 'default-image-url', // Use a default image URL if userImg is undefined
             post_titel: post_titel || 'No Title',
-            post_img: downloadURL,
+            post_img: downloadURL || 'default-image-url',
             createdAt: new Date(),
             like: 0,
             opmerking: ""

@@ -21,5 +21,19 @@ describe('template spec', () => {
     // Verifieer dat de URL is veranderd naar /gebruikers
     cy.url().should('include', '/gebruikers')
     
+    // Scroll een beetje naar beneden
+    cy.scrollTo('bottom', { duration: 10 })
+    
+    // Klik op de eerste gevonden comment afbeelding
+    cy.get('img[alt="comment"]').first().click()
+    
+    // Type 'test' in het eerste gevonden invoerveld met placeholder 'opmerking'
+    cy.get('input[placeholder="opmerking"]').first().type('test')
+    
+    // Klik op de submit knop
+    cy.get('input[type="submit"][value="Reageren"]').first().click()
+    
+    // Klik op de paragraaf met de class 'opmerkingen_lijst'
+    cy.get('p.opmerkingen_lijst').first().click()
   })
 })

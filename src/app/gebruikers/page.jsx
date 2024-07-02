@@ -189,7 +189,7 @@ export default function Gebruiker() {
                             </div>
                         </div>
                         <div className="post_likes">
-                            <div className="like" onClick={() => handleLike(post.id, post.like)}>
+                            <div className="like" data-testid="like-button" onClick={() => handleLike(post.id, post.like)}>
                                 <img src="/like.png" alt="like" />
                                 <p>Vind ik leuk</p>
                             </div>

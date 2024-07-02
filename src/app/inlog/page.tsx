@@ -69,7 +69,7 @@ export default function Inlog() {
           <input type="submit" value="Inloggen" />
           {err && <span>{err}</span>}
           <div className="google" onClick={handleLogin}>
-            <Image src={google} alt="Google" />
+            <Image src={google} alt="Google" data-testid="google-image"/>
             <a href="">Wachtwoord vergeten?</a>
           </div>
           <a href="maakaccound">Geen account? Sign up</a>
